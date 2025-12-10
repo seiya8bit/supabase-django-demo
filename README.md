@@ -1,21 +1,16 @@
-# Supabase + Django Web API Server (Monorepo)
+# Supabase + Django Web API Server
 
-Django-based Web API backed by Supabase with Row-Level Security (RLS). Uses pnpm workspace for a React (Vite) frontend and Django backend; Python deps managed with uv.
+Django-based Web API backed by Supabase with Row-Level Security (RLS).
+Python dependencies are managed with uv.
 
-## Monorepo Scaffold (short steps)
-1) Initialize workspace: `pnpm init -y`
-2) Add workspace file [`pnpm-workspace.yaml`](pnpm-workspace.yaml) with:
-```
-packages:
-  - "apps/*"
-```
-3) Create frontend: `pnpm create vite apps/web --template react-ts`
-4) Create backend dir: `mkdir -p apps/api && cd apps/api && uv init --python 3.11 && uv add django`
-5) Root installs: `pnpm install`
+## Backend Setup
+1) Initialize backend directory: `mkdir -p api && cd api && uv init --python 3.14`
+2) Install Django and dependencies: `uv add django`
+3) Configure Supabase env vars (see below) and Django settings for RLS-backed access.
 
 ## Quick Start
-- Backend: `cd apps/api && uv run python manage.py migrate && uv run python manage.py runserver`
-- Frontend: `cd apps/web && pnpm install && pnpm dev`
+- Backend: `cd api && uv run python manage.py migrate && uv run python manage.py runserver 0.0.0.0:8000`
+- Health check: open `http://localhost:8000/health` or `curl http://localhost:8000/health`
 
 ## Env Vars
 - `SUPABASE_URL`
@@ -26,3 +21,4 @@ packages:
 ## Notes
 - RLS must be enabled and policies defined on Supabase tables.
 - Keep service-role keys on the server side only.
+- React/Vite frontend removed; repository now focuses solely on the Django API.
