@@ -14,7 +14,7 @@ uv sync
 uv run python manage.py migrate
 
 # Start the server
-uv run python manage.py runserver 0.0.0.0:8000
+uv run python manage.py runserver localhost:8000
 
 # Health check
 curl http://localhost:8000/health
