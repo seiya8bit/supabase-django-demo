@@ -1,4 +1,4 @@
-# Client Authentication Notes
+# Client Authentication
 
 ## Requirements
 
