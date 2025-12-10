@@ -29,11 +29,13 @@ const { data: { session } } = await supabase.auth.getSession()
 const token = session?.access_token
 
 // Attach the access token to the Authorization header
-const res = await fetch(
-  `${process.env.NEXT_PUBLIC_DJANGO_API_BASE_URL}/xxx`,
-  {
-    headers: { Authorization: `Bearer ${token}` },
-    credentials: 'include',
+const djangoApiBaseUrl = import.meta.VITE_DJANGO_API_BASE_URL
+const res = await fetch(`${djangoApiBaseUrl}/xxx`, {
+  method: 'GET',
+  credentials: 'include',
+  headers: {
+    Authorization: `Bearer ${token}`
+  },
   }
 )
 const data = await res.json()
