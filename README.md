@@ -1,24 +1,21 @@
 # Supabase + Django Web API Server
 
-Django-based Web API backed by Supabase with Row-Level Security (RLS).
-Python dependencies are managed with uv.
+Startup instructions for the Django Web API server.
 
-## Backend Setup
-1) Initialize backend directory: `mkdir -p api && cd api && uv init --python 3.14`
-2) Install Django and dependencies: `uv add django`
-3) Configure Supabase env vars (see below) and Django settings for RLS-backed access.
+## Getting started
 
-## Quick Start
-- Backend: `cd api && uv run python manage.py migrate && uv run python manage.py runserver 0.0.0.0:8000`
-- Health check: open `http://localhost:8000/health` or `curl http://localhost:8000/health`
+```sh
+cd api
 
-## Env Vars
-- `SUPABASE_URL`
-- `SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY` (server-only if needed)
-- `DJANGO_SECRET_KEY`
+# Install dependencies (if not yet)
+uv sync
 
-## Notes
-- RLS must be enabled and policies defined on Supabase tables.
-- Keep service-role keys on the server side only.
-- React/Vite frontend removed; repository now focuses solely on the Django API.
+# Apply migrations
+uv run python manage.py migrate
+
+# Start the server
+uv run python manage.py runserver 0.0.0.0:8000
+
+# Health check
+curl http://localhost:8000/health
+```
