@@ -19,3 +19,11 @@ uv run python manage.py runserver 0.0.0.0:8000
 # Health check
 curl http://localhost:8000/health
 ```
+
+## Supabase local environment (Docker)
+
+```sh
+cd supabase
+npm install
+npm run local:start
+```

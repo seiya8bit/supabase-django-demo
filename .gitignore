@@ -4,8 +4,6 @@ __pycache__/
 
 # Environments
 .venv/
-.env
-.env.*
 
 # Django
 *.log
@@ -28,3 +26,6 @@ htmlcov/
 .vscode/
 .idea/
 .DS_Store
+
+# Node.js
+node_modules
