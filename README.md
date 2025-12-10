@@ -36,6 +36,18 @@ cd api
 uv run python manage.py makemigrations
 ```
 
+## Apply migrations to Supabase database
+
+Supabase local default Postgres (after `npm run local:start`) listens on 54322.
+Export the URL and run migrate:
+
+```sh
+cd api
+
+export DATABASE_URL="postgresql://postgres:postgres@localhost:54322/postgres"
+uv run python manage.py migrate
+```
+
 ## Remove migration files (cleanup)
 
 Delete generated migration files (except `__init__.py`) per app, then recreate:
