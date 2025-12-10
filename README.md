@@ -27,3 +27,27 @@ cd supabase
 npm install
 npm run local:start
 ```
+
+## Create new migrations (when models change)
+
+```sh
+cd api
+
+uv run python manage.py makemigrations
+```
+
+## Remove migration files (cleanup)
+
+Delete generated migration files (except `__init__.py`) per app, then recreate:
+
+```sh
+# Example: profiles app
+cd api/profiles/migrations
+
+rm 0*.py
+rm 1*.py
+
+# Recreate migrations
+cd ../..
+uv run python manage.py makemigrations
+```
